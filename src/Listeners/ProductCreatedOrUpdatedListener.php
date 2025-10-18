@@ -1,8 +1,8 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Listeners;
+namespace MrThito\GoogleMerchantApi\Listeners;
 
-use MOIREI\GoogleMerchantApi\Facades\ProductApi;
+use MrThito\GoogleMerchantApi\Facades\ProductApi;
 
 class ProductCreatedOrUpdatedListener
 {

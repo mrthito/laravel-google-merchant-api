@@ -1,12 +1,12 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Api;
+namespace MrThito\GoogleMerchantApi\Api;
 
-use MOIREI\GoogleMerchantApi\Contents\Order\Order;
-use MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput;
-use MOIREI\GoogleMerchantApi\Events\NewOrdersScoutedEvent;
-use MOIREI\GoogleMerchantApi\Events\OrderContentScoutedEvent;
-use MOIREI\GoogleMerchantApi\Contents\Price;
+use MrThito\GoogleMerchantApi\Contents\Order\Order;
+use MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput;
+use MrThito\GoogleMerchantApi\Events\NewOrdersScoutedEvent;
+use MrThito\GoogleMerchantApi\Events\OrderContentScoutedEvent;
+use MrThito\GoogleMerchantApi\Contents\Price;
 
 class OrderApi extends AbstractApi{
 
@@ -44,7 +44,7 @@ class OrderApi extends AbstractApi{
      * @param  Closure|Order  $order
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function acknowledge($order)
     {
@@ -68,7 +68,7 @@ class OrderApi extends AbstractApi{
      * @param  string $reason_text
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function cancel($order, string $reason = 'other', string $reason_text = 'Other')
     {
@@ -101,7 +101,7 @@ class OrderApi extends AbstractApi{
      * @param  string $reason_text
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function cancelLineItem($order, string $lineItemId, string $productId, $quantity = 1, string $reason = 'other', string $reason_text = 'Other')
     {
@@ -137,7 +137,7 @@ class OrderApi extends AbstractApi{
      * @param  string $reason_text
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function rejectReturnLineItem($order, string $lineItemId, string $productId, $quantity = 1, string $reason = 'other', string $reason_text = 'Other')
     {
@@ -175,7 +175,7 @@ class OrderApi extends AbstractApi{
      * @param  string $reason_text
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function returnRefundLineItem($order, string $lineItemId, string $productId, $priceAmount, $taxAmount, $quantity = 1, string $reason = 'other', string $reason_text = 'Other')
     {
@@ -196,7 +196,7 @@ class OrderApi extends AbstractApi{
             $callback = $priceAmount;
             $callback($priceAmount = new Price);
         }elseif(!($priceAmount instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         if(is_array($taxAmount)){
@@ -205,7 +205,7 @@ class OrderApi extends AbstractApi{
             $callback = $taxAmount;
             $callback($taxAmount = new Price);
         }elseif(!($taxAmount instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         return $instance->post([
@@ -226,7 +226,7 @@ class OrderApi extends AbstractApi{
      * @param Order|null|Closure $order
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function get($order = null, $params = array()){
         $instance = self::getInstance($this);
@@ -347,7 +347,7 @@ class OrderApi extends AbstractApi{
      *
      * @param Order|Closure $order
      * @return Order
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     static protected function resolveOrderInput($order){
         if (is_callable($order)) {

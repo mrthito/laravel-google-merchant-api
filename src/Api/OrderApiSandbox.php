@@ -1,10 +1,10 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Api;
+namespace MrThito\GoogleMerchantApi\Api;
 
-use MOIREI\GoogleMerchantApi\Contents\Order\Order;
-use MOIREI\GoogleMerchantApi\Contents\Order\OrderTest;
-use MOIREI\GoogleMerchantApi\Contents\Product\Product;
+use MrThito\GoogleMerchantApi\Contents\Order\Order;
+use MrThito\GoogleMerchantApi\Contents\Order\OrderTest;
+use MrThito\GoogleMerchantApi\Contents\Product\Product;
 
 class OrderApiSandbox extends OrderApi{
 
@@ -38,11 +38,11 @@ class OrderApiSandbox extends OrderApi{
                 'product' => (new Product)
                              ->kind(null)->channel(null)->availability(null) // unset
                              ->title('Wireless Power Bank')
-                             ->brand('MOIREI')
+                             ->brand('MrThito')
                              ->condition('new')
                              ->contentLanguage('en')
                              ->targetCountry('US')
-                             ->imageLink('https://mrsc.moirei.com/storage/media/new-moirei-qi-wireless-power-bank-10000-mah-fast-charge-type-c-usb-qc-wireless-pd-charging-mobile-po-1571021317-PMNsS.jpg')
+                             ->imageLink('https://mrsc.mrthito.com/storage/media/new-mrthito-qi-wireless-power-bank-10000-mah-fast-charge-type-c-usb-qc-wireless-pd-charging-mobile-po-1571021317-PMNsS.jpg')
                              ->offerId(5)
                              ->price(59, 'USD')
                              ->get(),
@@ -50,7 +50,7 @@ class OrderApiSandbox extends OrderApi{
                 'returnInfo' => [
                     'isReturnable' => true,
                     'daysToReturn' => 15,
-                    'policyUrl' => 'https://www.moirei.com/shop/returns',
+                    'policyUrl' => 'https://www.mrthito.com/shop/returns',
                 ],
                 'shippingDetails' => [
                     'deliverByDate' => '2019-11-20T12:34:02',
@@ -74,7 +74,7 @@ class OrderApiSandbox extends OrderApi{
      * @param  string  $country
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function create($order, $country = 'US')
     {
@@ -94,7 +94,7 @@ class OrderApiSandbox extends OrderApi{
      * @param  Closure|OrderTest|string  $order callback, TestOrder or the ID
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function advance($order)
     {
@@ -120,7 +120,7 @@ class OrderApiSandbox extends OrderApi{
      * @param  string $reason_text
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function cancel($order, string $reason = 'other', string $reason_text = 'Order cancel test')
     {
@@ -153,7 +153,7 @@ class OrderApiSandbox extends OrderApi{
      * @param  Closure|array  $items
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderInput
      */
     public function createReturn($order, $items)
     {
@@ -185,7 +185,7 @@ class OrderApiSandbox extends OrderApi{
      *
      * @param OrderTest|Closure $order
      * @return OrderTest
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderTestInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidOrderTestInput
      */
     static protected function resolveOrderTestInput($order){
         if (is_callable($order)) {

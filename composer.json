@@ -1,12 +1,12 @@
 {
-    "name": "moirei/laravel-google-merchant-api",
+    "name": "mrthito/laravel-google-merchant-api",
     "description": "Laravel Google Merchant Products API for Google Shopping.",
-    "homepage": "https://github.com/augustusnaz/laravel-google-merchant-api",
+    "homepage": "https://github.com/mrthito/laravel-google-merchant-api",
     "license": "MIT",
     "authors": [
         {
-            "name": "Augustus Okoye",
-            "email": "augustusokoye@moirei.com",
+            "name": "rashant Rijal",
+            "email": "prashant@mrthito.com",
             "role": "Developer"
         }
     ],
@@ -14,28 +14,25 @@
         "Laravel",
         "Google Merchant API",
         "Google Shopping API",
-        "moirei.com"
+        "mrthito.com"
     ],
     "require": {
-        "php": "^7.2|^8.0",
-        "illuminate/support": "~5.0|^6.0|^7.0|^8.0|^9.0",
-        "illuminate/cache": "~5.0|^6.0|^7.0|^8.0|^9.0",
-        "guzzlehttp/guzzle":"~5.3|^6.5|^7.0",
-        "google/apiclient": "^2.4"
+        "php": "^8.2|^8.3|^8.4",
+        "illuminate/support": "^12.0"
     },
     "autoload": {
         "psr-4": {
-            "MOIREI\\GoogleMerchantApi\\": "src"
+            "MrThito\\GoogleMerchantApi\\": "src"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "MOIREI\\GoogleMerchantApi\\GoogleMerchantApiServiceProvider"
+                "MrThito\\GoogleMerchantApi\\GoogleMerchantApiServiceProvider"
             ],
             "aliases": {
-                "ProductsApi": "MOIREI\\GoogleMerchantApi\\Facades\\ProductsApi"
+                "ProductsApi": "MrThito\\GoogleMerchantApi\\Facades\\ProductsApi"
             }
         }
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Api;
+namespace MrThito\GoogleMerchantApi\Api;
 
 use Closure;
-use MOIREI\GoogleMerchantApi\Contents\Product\Product;
-use MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput;
+use MrThito\GoogleMerchantApi\Contents\Product\Product;
+use MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput;
 
 class ProductApi extends AbstractApi{
 
@@ -24,7 +24,7 @@ class ProductApi extends AbstractApi{
      * @param  Closure|Product  $product
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput
      */
     public function insert($product)
     {
@@ -39,7 +39,7 @@ class ProductApi extends AbstractApi{
      *
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput
      */
     public function list($pageToken = null, $maxResults = 25){
         return $this->get(null, ['pageToken' => $pageToken, 'maxResults' => $maxResults]);
@@ -51,7 +51,7 @@ class ProductApi extends AbstractApi{
      * @param Product|null|Closure $product
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput
      */
     public function get($product = null, $params = array()){
         $instance = self::getInstance($this);
@@ -79,7 +79,7 @@ class ProductApi extends AbstractApi{
      * @param Product|Closure $product
      * @return mix
 	 * @throws \GuzzleHttp\Exception\ClientException
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput
      */
 	public function delete($product) {
         $instance = self::getInstance($this);
@@ -141,7 +141,7 @@ class ProductApi extends AbstractApi{
      *
      * @param Product|Closure $product
      * @return Product
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\InvalidProductInput
+     * @throws MrThito\GoogleMerchantApi\Exceptions\InvalidProductInput
      */
     static protected function resolveProductInput($product){
         if (is_callable($product)) {

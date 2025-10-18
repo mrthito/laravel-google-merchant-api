@@ -1,8 +1,8 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Exceptions;
+namespace MrThito\GoogleMerchantApi\Exceptions;
 
 class InvalidProductInput extends \Exception
 {
-    protected $message = 'MOIREI\GoogleMerchantApi: The product content type is invalid.';
+    protected $message = 'MrThito\GoogleMerchantApi: The product content type is invalid.';
 }

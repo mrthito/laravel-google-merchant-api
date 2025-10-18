@@ -1,11 +1,11 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Events;
+namespace MrThito\GoogleMerchantApi\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use MOIREI\GoogleMerchantApi\Contents\Product\Product;
+use MrThito\GoogleMerchantApi\Contents\Product\Product;
 
 class ProductCreatedOrUpdatedEvent
 {

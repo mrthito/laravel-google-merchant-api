@@ -10,7 +10,7 @@ return [
 	| Set the default merchant from below configurations.
 	*/
 
-    // 'default_merchant' => 'moirei',
+    // 'default_merchant' => 'mrthito',
 
     /*
 	|--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
 	*/
 
     'merchants' => [
-        'moirei' => [
+        'mrthito' => [
             /*
             |--------------------------------------------------------------------------
             | Application Name
@@ -64,7 +64,7 @@ return [
             | Your Merchant ID for Google Shopping API.
             | This is a numeric value.
             */
-            'merchant_id' => env('GOOGLE_MERCHANT_ID_MOIREI', ''),
+            'merchant_id' => env('GOOGLE_MERCHANT_ID', ''),
 
             /*
             |--------------------------------------------------------------------------
@@ -74,7 +74,7 @@ return [
             | The base path url to json file that holds your service account credentials.
             | This file should only be accessible to your application.
             */
-            'client_credentials_path' => storage_path('app/google-merchant-api/moirei-store-credentials.json'),
+            'client_credentials_path' => storage_path('app/google-merchant-api/mrthito-store-credentials.json'),
         ]
     ],
 

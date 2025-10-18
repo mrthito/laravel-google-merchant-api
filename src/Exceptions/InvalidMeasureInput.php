@@ -1,8 +1,8 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Exceptions;
+namespace MrThito\GoogleMerchantApi\Exceptions;
 
 class InvalidMeasureInput extends \Exception
 {
-    protected $message = 'MOIREI\GoogleMerchantApi: The measure content type is invalid.';
+    protected $message = 'MrThito\GoogleMerchantApi: The measure content type is invalid.';
 }

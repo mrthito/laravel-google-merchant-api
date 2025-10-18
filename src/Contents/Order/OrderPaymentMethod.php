@@ -1,8 +1,8 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Contents\Order;
+namespace MrThito\GoogleMerchantApi\Contents\Order;
 
-use MOIREI\GoogleMerchantApi\Contents\BaseContent;
+use MrThito\GoogleMerchantApi\Contents\BaseContent;
 
 class OrderPaymentMethod extends BaseContent
 {

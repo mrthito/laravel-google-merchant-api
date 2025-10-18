@@ -6,7 +6,7 @@ Any attribute (as allowed by the content class) can be assigned by simply callin
 $product->offerId(1);
 ```
 
-The allowed attributes are defined in the `MOIREI\GoogleMerchantApi\Contents\Product\Product` class as per [this specification]( https://support.google.com/merchants/answer/7052112 ).
+The allowed attributes are defined in the `MrThito\GoogleMerchantApi\Contents\Product\Product` class as per [this specification]( https://support.google.com/merchants/answer/7052112 ).
 
 
 

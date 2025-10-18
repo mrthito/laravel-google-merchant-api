@@ -1,9 +1,9 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Contents\Order;
+namespace MrThito\GoogleMerchantApi\Contents\Order;
 
-use MOIREI\GoogleMerchantApi\Contents\BaseContent;
-use MOIREI\GoogleMerchantApi\Contents\Price;
+use MrThito\GoogleMerchantApi\Contents\BaseContent;
+use MrThito\GoogleMerchantApi\Contents\Price;
 
 class Order extends BaseContent
 {
@@ -75,7 +75,7 @@ class Order extends BaseContent
             $callback = $cost;
             $callback($cost = new Price);
         }elseif(!($cost instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         $this->attributes[ 'shippingCost' ] = $cost->get();
@@ -103,7 +103,7 @@ class Order extends BaseContent
             $callback = $cost;
             $callback($cost = new Price);
         }elseif(!($cost instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         $this->attributes[ 'shippingCostTax' ] = $cost->get();
@@ -125,7 +125,7 @@ class Order extends BaseContent
             $callback = $paymentMethod;
             $callback($paymentMethod = new OrderPaymentMethod);
         }elseif(!($paymentMethod instanceof OrderPaymentMethod)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidOrderPaymentMethodInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidOrderPaymentMethodInput;
         }
 
         $this->attributes[ 'paymentMethod' ] = $paymentMethod->get();

@@ -1,11 +1,11 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Facades;
+namespace MrThito\GoogleMerchantApi\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \MOIREI\GoogleMerchantApi\Classes\ProductsApi
+ * @see \MrThito\GoogleMerchantApi\Classes\ProductsApi
  */
 class ProductApi extends Facade
 {

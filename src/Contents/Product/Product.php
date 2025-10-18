@@ -1,13 +1,13 @@
 <?php
 
-namespace MOIREI\GoogleMerchantApi\Contents\Product;
+namespace MrThito\GoogleMerchantApi\Contents\Product;
 
-use MOIREI\GoogleMerchantApi\Contents\BaseContent;
+use MrThito\GoogleMerchantApi\Contents\BaseContent;
 use Closure;
 use Carbon\Carbon;
-use MOIREI\GoogleMerchantApi\Contents\Price;
-use MOIREI\GoogleMerchantApi\Contents\Measure;
-use MOIREI\GoogleMerchantApi\Contents\Taxes;
+use MrThito\GoogleMerchantApi\Contents\Price;
+use MrThito\GoogleMerchantApi\Contents\Measure;
+use MrThito\GoogleMerchantApi\Contents\Taxes;
 
 class Product extends BaseContent
 {
@@ -146,12 +146,12 @@ class Product extends BaseContent
      * Batch fill with array
      *
      * @param array|Model $attributes
-     * @throws MOIREI\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined
+     * @throws MrThito\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined
      */
     public function with($attributes){
 
         if( !($attributes_map = config('laravel-google-merchant-api.contents.products.attributes')) ){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined;
         }
 
         if($attributes instanceof \Illuminate\Database\Eloquent\Model){
@@ -327,7 +327,7 @@ class Product extends BaseContent
             $callback = $price;
             $callback($price = new Price);
         }elseif(!($price instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         $this->attributes[ 'price' ] = $price->get();
@@ -355,7 +355,7 @@ class Product extends BaseContent
             $callback = $price;
             $callback($price = new Price);
         }elseif(!($price instanceof Price)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidPriceInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidPriceInput;
         }
 
         $this->attributes[ 'salePrice' ] = $price->get();
@@ -377,7 +377,7 @@ class Product extends BaseContent
             $callback = $shipping;
             $callback($shipping = new ProductShipping);
         }elseif(!($shipping instanceof ProductShipping)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidProductShippingInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidProductShippingInput;
         }
 
         $this->attributes[ 'shipping' ][] = $shipping->get();
@@ -403,7 +403,7 @@ class Product extends BaseContent
             $shippingHeight = (new Measure)->unit($unit); // default
             $callback($shippingHeight);
         }elseif(!($shippingHeight instanceof Measure)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
         }
 
         $this->attributes[ 'shippingHeight' ] = $shippingHeight->get();
@@ -428,7 +428,7 @@ class Product extends BaseContent
             $shippingLength = (new Measure)->unit($unit); // default
             $callback($shippingLength);
         }elseif(!($shippingLength instanceof Measure)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
         }
 
         $this->attributes[ 'shippingLength' ] = $shippingLength->get();
@@ -454,7 +454,7 @@ class Product extends BaseContent
             $shippingWeight = (new Measure)->unit($unit); // default
             $callback($shippingWeight);
         }elseif(!($shippingWeight instanceof Measure)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
         }
 
         $this->attributes[ 'shippingWeight' ] = $shippingWeight->get();
@@ -477,7 +477,7 @@ class Product extends BaseContent
             $tax = (new Taxes)->with($tax);
         }
         elseif(!($tax instanceof Taxes)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidTaxInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidTaxInput;
         }
 
         $this->attributes[ 'taxes' ][] = $tax->get();
@@ -503,7 +503,7 @@ class Product extends BaseContent
             $value = (new Measure)->unit($unit); // default
             $callback($value);
         }elseif(!($value instanceof Measure)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
         }
 
         $this->attributes[ 'unitPricingBaseMeasure' ] = $value->get();
@@ -529,7 +529,7 @@ class Product extends BaseContent
             $value = (new Measure)->unit($unit); // default
             $callback($value);
         }elseif(!($value instanceof Measure)){
-            throw new \MOIREI\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
+            throw new \MrThito\GoogleMerchantApi\Exceptions\InvalidMeasureInput;
         }
 
         $this->attributes[ 'unitPricingMeasure' ] = $value->get();

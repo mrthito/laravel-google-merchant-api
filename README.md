@@ -7,8 +7,8 @@ A sweet package for managing Google Merchant Center feeds for Google Shopping. T
 Example usage:
 
 ```php
-use MOIREI\GoogleMerchantApi\Facades\ProductApi;
-use MOIREI\GoogleMerchantApi\Facades\OrderApi;
+use MrThito\GoogleMerchantApi\Facades\ProductApi;
+use MrThito\GoogleMerchantApi\Facades\OrderApi;
 
 ...
 
@@ -67,7 +67,7 @@ Although backwards compatible, be sure to update your config to be able to use m
 Via composer:
 
 ```bash
-composer require moirei/laravel-google-merchant-api
+composer require mrthito/laravel-google-merchant-api
 ```
 
 Install the service provider (skip for Laravel>=5.5);
@@ -76,7 +76,7 @@ Install the service provider (skip for Laravel>=5.5);
 // config/app.php
 'providers' => [
     ...
-    MOIREI\GoogleMerchantApi\GoogleMerchantApiServiceProvider::class,
+    MrThito\GoogleMerchantApi\GoogleMerchantApiServiceProvider::class,
 ],
 ```
 
@@ -153,7 +153,7 @@ $attributes = [
 ];
 ProductApi::insert(function($product) use($attributes){
     $product->with($attributes)
-        	->link('https://moirei.com/mg001')
+        	->link('https://mrthito.com/mg001')
         	->price(60, 'USD');
 })->then(function($data){
     echo 'Product inserted';
@@ -167,7 +167,7 @@ ProductApi::insert(function($product) use($attributes){
 **With arrays**:
 
 ```php
-use MOIREI\GoogleMerchantApi\Contents\Product\Product as GMProduct;
+use MrThito\GoogleMerchantApi\Contents\Product\Product as GMProduct;
 
 ...
 $attributes = [
@@ -183,7 +183,7 @@ The `attributes` values must be defined as per the attributes map in the config.
 
 ```php
 use App\Models\Product;
-use MOIREI\GoogleMerchantApi\Contents\Product\Product as GMProduct;
+use MrThito\GoogleMerchantApi\Contents\Product\Product as GMProduct;
 
 
 ...
@@ -225,7 +225,7 @@ The provided event and listener can be setup such that when your application cre
 To set this up, add the following snippet to your eloquent mode.  The `product` variable can be a model or an array.
 
 ```php
-use MOIREI\GoogleMerchantApi\Events\ProductCreatedOrUpdatedEvent;
+use MrThito\GoogleMerchantApi\Events\ProductCreatedOrUpdatedEvent;
 
 ...
 
@@ -262,7 +262,7 @@ protected static function boot() {
 Next, define the events relationship in `EventServiceProvider.php`.
 
 ```php
-use MOIREI\GoogleMerchantApi\Listeners\ProductCreatedOrUpdatedListener;
+use MrThito\GoogleMerchantApi\Listeners\ProductCreatedOrUpdatedListener;
 
 ...
 
@@ -320,7 +320,7 @@ ProductApi::delete($product)->then(function($data){
 To set up with the event listener, add the following to your eloquent model:
 
 ```php
-use MOIREI\GoogleMerchantApi\Events\ProductDeletedEvent;
+use MrThito\GoogleMerchantApi\Events\ProductDeletedEvent;
 
 ...
 
@@ -341,7 +341,7 @@ protected static function boot() {
 Then define the relationship in `EventServiceProvider.php`:
 
 ```php
-use MOIREI\GoogleMerchantApi\Listeners\ProductDeletedListener;
+use MrThito\GoogleMerchantApi\Listeners\ProductDeletedListener;
 
 ...
 
@@ -384,13 +384,13 @@ Additionally the `listAcknowledged` method is provided so one can list acknowled
 
 #### Scheduled Scouts
 
-If `schedule_orders_check` is set as true in the config, the package will regularly scout un-acknowledged orders and will fire a `\MOIREI\GoogleMerchantApi\Events\NewOrdersScoutedEvent` event. This event includes an **array** of orders of class `\MOIREI\GoogleMerchantApi\Contents\Order`. The orders are structured as per the [Order Resource](https://developers.google.com/shopping-content/v2/reference/v2.1/orders#resource).
+If `schedule_orders_check` is set as true in the config, the package will regularly scout un-acknowledged orders and will fire a `\MrThito\GoogleMerchantApi\Events\NewOrdersScoutedEvent` event. This event includes an **array** of orders of class `\MrThito\GoogleMerchantApi\Contents\Order`. The orders are structured as per the [Order Resource](https://developers.google.com/shopping-content/v2/reference/v2.1/orders#resource).
 
 Example handle in your listener:
 
 ```php
-use MOIREI\GoogleMerchantApi\Events\NewOrdersScoutedEvent;
-use MOIREI\GoogleMerchantApi\Facades\OrderApi;
+use MrThito\GoogleMerchantApi\Events\NewOrdersScoutedEvent;
+use MrThito\GoogleMerchantApi\Facades\OrderApi;
 
 ...
 public function handle(NewOrdersScoutedEvent $event)
@@ -420,7 +420,7 @@ public function handle(NewOrdersScoutedEvent $event)
 
 * Accessing the `lineItems` will automatically resolve and attach the corresponding model to each item. Of course this assumes your inserted products' `offerId` correspond to the model's ID & primary key.
 * If you haven't already started Laravel scheduler, you'll need to add the following Cron entry to your server. `* * * * * php artisan schedule:run >> /dev/null 2>&1`.
-* It's important you test that the scheduler is set up correctly. For this reason, the `MOIREI\GoogleMerchantApi\Events\OrderContentScoutedEvent` event is provided. If `debug_scout` is set to true in the config, this event is fired whenever the scheduler fires.
+* It's important you test that the scheduler is set up correctly. For this reason, the `MrThito\GoogleMerchantApi\Events\OrderContentScoutedEvent` event is provided. If `debug_scout` is set to true in the config, this event is fired whenever the scheduler fires.
 
 #### Sandboxing
 
@@ -468,15 +468,15 @@ php artisan gm-orders:scout
 
 Methods that throw exceptions
 
-* `MOIREI\GoogleMerchantApi\Contents\Product::with()`
+* `MrThito\GoogleMerchantApi\Contents\Product::with()`
 
-  throws `MOIREI\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined` if the supplied attributes is not a Model or array.
+  throws `MrThito\GoogleMerchantApi\Exceptions\ProductContentAttributesUndefined` if the supplied attributes is not a Model or array.
 
 * The `insert`, `get`, `delete`, `list`, `listAcknowledged` and `scout` methods in the API classes will throw `GuzzleHttp\Exception\ClientException` if the client request is corrupted, fails, not defined or not authorised.
 
-* The `MOIREI\GoogleMerchantApi\Exceptions\Invalid**Input` exceptions are thrown if an unresolvable entity is passed as a content attribute.
+* The `MrThito\GoogleMerchantApi\Exceptions\Invalid**Input` exceptions are thrown if an unresolvable entity is passed as a content attribute.
 
-* The `merchant` method throws `MOIREI\GoogleMerchantApi\Exceptions\InvalidMechantDetails` if unable to resolve a merchant ID or credentials path.
+* The `merchant` method throws `MrThito\GoogleMerchantApi\Exceptions\InvalidMechantDetails` if unable to resolve a merchant ID or credentials path.
 
 Exceptions should be handled using the `catch` function. If making synchronous calls, use the try-catch block. You'd be well advised to always catch requests (and notify your business logic), seeing that Google has a million reasons to deny any request.
 
